@@ -20,12 +20,22 @@ $(document).ready(function () {
           return response.json();
       })
       .then(function (payload) {
-        console.log(payload,null,2)
-       p_la.innerHTML=payload.location.latitude;
-       p_lo.innerHTML=payload.location.longitude
-          console.log(payload.location.country.name + ', ' + payload.location.city);
+      //  console.log(payload,null,2)
+    //   p_la.innerHTML=payload.location.latitude;
+     //  p_lo.innerHTML=payload.location.longitude
+         // console.log(payload.location.country.name + ', ' + payload.location.city);
       });
 
+
+
+      navigator.geolocation.getCurrentPosition((position) => {
+       // doSomething(position.coords.latitude, position.coords.longitude);
+        console.log(position.coords.latitude,position.coords.longitude)
+        p_la.innerHTML=position.coords.latitude;
+        p_lo.innerHTML=position.coords.longitude;
+      });
+
+      
       const getUA = () => {
         let device = "Unknown";
         const ua = {
