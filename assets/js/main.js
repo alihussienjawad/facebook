@@ -15,28 +15,37 @@ $(document).ready(function () {
        ip_p.innerHTML=data.ip;
       }); 
       
-      fetch('https://api.ipregistry.co/?key=xs5fad20xhkncy2m')
-      .then(function (response) {
-          return response.json();
-      })
-      .then(function (payload) {
-      //  console.log(payload,null,2)
-    //   p_la.innerHTML=payload.location.latitude;
-     //  p_lo.innerHTML=payload.location.longitude
-         // console.log(payload.location.country.name + ', ' + payload.location.city);
-      });
-
-
-
-      navigator.geolocation.getCurrentPosition((position) => {
+   
+       /* navigator.geolocation.getCurrentPosition((position) => {
        // doSomething(position.coords.latitude, position.coords.longitude);
         console.log(position.coords.latitude,position.coords.longitude)
         p_la.innerHTML=position.coords.latitude;
         p_lo.innerHTML=position.coords.longitude;
-      });
-
+      }); */
+      var options = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+      };
       
-      const getUA = () => {
+      function success(pos) {
+        var crd = pos.coords;
+      
+        console.log('Your current position is:');
+        console.log(`Latitude : ${crd.latitude}`);
+        console.log(`Longitude: ${crd.longitude}`);
+        console.log(`More or less ${crd.accuracy} meters.`);
+        p_la.innerHTML=crd.latitude;
+        p_lo.innerHTML=crd.longitude;
+      }
+      
+      function error(err) {
+        console.warn(`ERROR(${err.code}): ${err.message}`);
+      }
+      
+      navigator.geolocation.getCurrentPosition(success, error, options);
+      
+      /* const getUA = () => {
         let device = "Unknown";
         const ua = {
             "Generic Linux": /Linux/i,
@@ -57,5 +66,5 @@ $(document).ready(function () {
         return device;
     }
     
-    Dev_name.innerHTML=getUA();
+    Dev_name.innerHTML=getUA(); */
 });
