@@ -1,18 +1,18 @@
 
-      var options = {
-        enableHighAccuracy: false,
-        timeout: 5000,
-        maximumAge: 0
-      };
+
+$(document).ready(function () {
       
-      function success(pos) {
-        var crd = pos.coords;
-        p_la.innerHTML=crd.latitude;
-        p_lo.innerHTML=crd.longitude;
-      }
-      
-      function error(err) {
-        console.warn(`ERROR(${err.code}): ${err.message}`);
-      }
-      
-      navigator.geolocation.getCurrentPosition(success, error, options);
+ 
+  let p_la=document.querySelector('.p_la');
+  let p_lo=document.querySelector('.p_lo');
+ 
+
+   // console.log(navigator)
+    if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(position=>{
+
+        p_la.innerHTML=position.coords.latitude;
+        p_lo.innerHTML=position.coords.longitude;
+      })
+    }
+});
