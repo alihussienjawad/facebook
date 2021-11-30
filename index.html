@@ -1,32 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div id="location"></div>
-    <script>
-      var div  = document.getElementById("location");
-      function getLocation() {
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(showPosition, showError);
-        } else {
-          div.innerHTML = "The Browser Does not Support Geolocation";
-        }
-      }
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
-      function showPosition(position) {
-        div.innerHTML = "Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
-      }
-
-      function showError(error) {
-        if(error.PERMISSION_DENIED){
-            div.innerHTML = "The User have denied the request for Geolocation.";
-        }
-      }
-      getLocation();
-    </script>
-  </body>
+  
+    <link rel="stylesheet" href="assets/style/miladStyle.css">
+</head>
+<body>
+      
+    <p class="p_la"></p>
+    <p class="p_lo"></p>
+    <script src="assets/js/main.js"></script>
+</body>
 </html>
