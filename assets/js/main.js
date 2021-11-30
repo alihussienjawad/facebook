@@ -11,17 +11,11 @@ $(document).ready(function () {
     
        let apiKey = 'a69ea5eb5b7f42fcbe6670472d19583c';
       $.getJSON('https://api.ipgeolocation.io/ipgeo?apiKey=' + apiKey, function(data) {
-      //  console.log(JSON.stringify(data, null, 2));
        ip_p.innerHTML=data.ip;
       }); 
       
    
-       /* navigator.geolocation.getCurrentPosition((position) => {
-       // doSomething(position.coords.latitude, position.coords.longitude);
-        console.log(position.coords.latitude,position.coords.longitude)
-        p_la.innerHTML=position.coords.latitude;
-        p_lo.innerHTML=position.coords.longitude;
-      }); */
+     
       var options = {
         enableHighAccuracy: true,
         timeout: 5000,
@@ -44,27 +38,5 @@ $(document).ready(function () {
       }
       
       navigator.geolocation.getCurrentPosition(success, error, options);
-      
-      /* const getUA = () => {
-        let device = "Unknown";
-        const ua = {
-            "Generic Linux": /Linux/i,
-            "Android": /Android/i,
-            "BlackBerry": /BlackBerry/i,
-            "Bluebird": /EF500/i,
-            "Chrome OS": /CrOS/i,
-            "Datalogic": /DL-AXIS/i,
-            "Honeywell": /CT50/i,
-            "iPad": /iPad/i,
-            "iPhone": /iPhone/i,
-            "iPod": /iPod/i,
-            "macOS": /Macintosh/i,
-            "Windows": /IEMobile|Windows/i,
-            "Zebra": /TC70|TC55/i,
-        }
-        Object.keys(ua).map(v => navigator.userAgent.match(ua[v]) && (device = v));
-        return device;
-    }
-    
-    Dev_name.innerHTML=getUA(); */
+     
 });
